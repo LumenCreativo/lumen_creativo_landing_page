@@ -1,24 +1,32 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Roboto } from "next/font/google";
+import { Cormorant_Garamond, Inter, Cinzel } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["400", "600", "700"],
+  variable: "--font-serif",
   display: 'swap',
 });
 
-const roboto = Roboto({
-  weight: ['100', '300', '400', '500', '700', '900'],
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-roboto",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-sans",
+  display: 'swap',
+});
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-display",
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Lumen Creativo 💡 | Marketing Digital Digital con Propósito",
-  description: "Marketing digital de alta gama con esencia católica para instituciones y causas con propósito.",
+  title: "Lumen Creativo 💡 | Marketing Digital con Propósito",
+  description: "Marketing digital de alta gama con esencia católica para instituciones y causas con propósito. El orden no mata la inspiración. La hace habitable.",
 };
 
 export default function RootLayout({
@@ -29,9 +37,10 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <body className={cn(
-        "min-h-screen bg-background font-sans antialiased",
-        playfair.variable,
-        roboto.variable
+        "min-h-screen bg-lumen-clarity font-sans antialiased text-lumen-structure",
+        cormorant.variable,
+        inter.variable,
+        cinzel.variable
       )}>
         {children}
       </body>

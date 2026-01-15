@@ -1,52 +1,65 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Monitor, PenTool, Users, Zap } from "lucide-react";
+import { Sparkles, Layers, Briefcase, Users } from "lucide-react";
 
 const services = [
     {
+        name: "Initium",
+        subtitle: "El Primer Paso",
+        icon: Sparkles,
+        price: "$297",
+        description: "Auditoría estratégica completa para diagnóstico inicial.",
+        borderColor: "border-lumen-creative",
+        features: ["Análisis de presencia digital", "Roadmap estratégico", "Sesión de consultoría"]
+    },
+    {
+        name: "Verbum Pro",
+        subtitle: "La Palabra que Conecta",
+        icon: Layers,
+        price: "$897",
+        description: "Gestión integral de contenido y redes sociales.",
+        borderColor: "border-lumen-vision",
+        features: ["Estrategia de contenido", "Gestión de redes", "Reportes mensuales"]
+    },
+    {
+        name: "Plenitude",
+        subtitle: "Presencia Completa",
+        icon: Briefcase,
+        price: "$2,497",
+        description: "Transformación digital con web y branding profesional.",
+        borderColor: "border-lumen-energy",
+        features: ["Sitio web Next.js", "Identidad de marca", "SEO avanzado"]
+    },
+    {
+        name: "Divinitas",
+        subtitle: "Excelencia Total",
         icon: Users,
-        title: "Estrategia de Redes",
-        description: "Gestión comunitaria y contenido de valor para conectar con tu audiencia real.",
-        color: "bg-blue-50 text-blue-600"
-    },
-    {
-        icon: Monitor,
-        title: "Diseño Web Next.js",
-        description: "Sitios web ultrarrápidos, optimizados para SEO y con estética premium.",
-        color: "bg-teal-50 text-teal-600"
-    },
-    {
-        icon: PenTool,
-        title: "Branding Institucional",
-        description: "Identidad visual coherente que transmite los valores de tu institución.",
-        color: "bg-purple-50 text-purple-600"
-    },
-    {
-        icon: Zap,
-        title: "Automatización n8n",
-        description: "Optimizamos tus flujos de trabajo e integaciones para ahorrar tiempo vital.",
-        color: "bg-orange-50 text-orange-600"
+        price: "Custom",
+        description: "Solución enterprise para instituciones de gran escala.",
+        borderColor: "border-lumen-structure",
+        features: ["Todo en Plenitude", "Automatización n8n", "Soporte dedicado"]
     }
 ];
 
 const Services = () => {
     return (
-        <section id="servicios" className="py-32 bg-white relative">
-            {/* Decorative dividers */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lumen-main/20 to-transparent" />
-
-            <div className="container px-4 md:px-6 mx-auto">
+        <section id="servicios" className="py-24 md:py-32 bg-white">
+            <div className="container px-6 md:px-8 mx-auto">
+                {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-20">
-                    <span className="text-lumen-main font-bold tracking-widest text-sm uppercase mb-3 block">Nuestra Experticia</span>
-                    <h2 className="font-serif text-4xl md:text-5xl font-bold text-lumen-dark mb-6">
-                        Servicios diseñados para la Misión
+                    <span className="text-lumen-creative font-medium tracking-widest text-sm uppercase mb-4 block">
+                        Nuestros Servicios
+                    </span>
+                    <h2 className="font-serif text-4xl md:text-5xl font-bold text-lumen-structure mb-6">
+                        Soluciones para la Misión
                     </h2>
-                    <p className="text-gray-600 text-xl font-light">
-                        Soluciones integrales donde la tecnología sirve al propósito, y no al revés.
+                    <p className="text-lg text-lumen-structure/60 leading-relaxed">
+                        Cuatro niveles de servicio diseñados para acompañar cada etapa de tu transformación digital.
                     </p>
                 </div>
 
+                {/* Services Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {services.map((service, index) => (
                         <motion.div
@@ -55,19 +68,40 @@ const Services = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="group relative bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                            className={`bg-lumen-clarity hover:shadow-2xl transition-all duration-500 rounded-lg p-8 border-t-4 ${service.borderColor}`}
                         >
-                            <div className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300`}>
-                                <service.icon size={28} />
+                            {/* Icon */}
+                            <div className="mb-6">
+                                <service.icon size={32} className="text-lumen-structure/80" />
                             </div>
-                            <h3 className="font-serif text-2xl font-bold text-lumen-dark mb-4">
-                                {service.title}
+
+                            {/* Name & Subtitle */}
+                            <h3 className="font-serif text-2xl font-bold text-lumen-structure mb-1">
+                                {service.name}
                             </h3>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="text-sm text-lumen-creative font-medium mb-4">
+                                {service.subtitle}
+                            </p>
+
+                            {/* Price */}
+                            <p className="text-3xl font-bold text-lumen-vision mb-4">
+                                {service.price}
+                            </p>
+
+                            {/* Description */}
+                            <p className="text-base text-lumen-structure/60 mb-6 leading-relaxed">
                                 {service.description}
                             </p>
 
-                            <div className="mt-8 h-1 w-12 bg-gray-100 group-hover:bg-lumen-main transition-colors duration-500 rounded-full" />
+                            {/* Features */}
+                            <ul className="space-y-2">
+                                {service.features.map((feature, i) => (
+                                    <li key={i} className="flex items-center gap-2 text-sm text-lumen-structure/70">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-lumen-creative" />
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
                         </motion.div>
                     ))}
                 </div>

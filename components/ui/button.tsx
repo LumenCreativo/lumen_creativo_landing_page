@@ -3,20 +3,20 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
     {
         variants: {
             variant: {
-                default: "bg-lumen-main text-white hover:bg-lumen-energy shadow-sm",
-                outline: "border border-lumen-main text-lumen-main hover:bg-lumen-main hover:text-white",
-                ghost: "hover:bg-lumen-light hover:text-lumen-dark text-lumen-dark",
-                link: "text-lumen-main underline-offset-4 hover:underline",
-                white: "bg-white text-lumen-dark hover:bg-gray-100 shadow-sm",
+                default: "bg-lumen-vision text-lumen-clarity hover:bg-lumen-vision/90 shadow-sm",
+                outline: "border-2 border-lumen-creative text-lumen-creative hover:bg-lumen-creative/10",
+                ghost: "hover:bg-lumen-clarity text-lumen-structure",
+                link: "text-lumen-creative underline-offset-4 hover:underline",
+                energy: "bg-lumen-energy text-white hover:bg-lumen-energy/90 shadow-lg",
             },
             size: {
                 default: "h-10 px-4 py-2",
-                sm: "h-9 rounded-md px-3",
-                lg: "h-12 rounded-md px-8 text-base",
+                sm: "h-9 rounded-lg px-3",
+                lg: "h-12 rounded-lg px-8 text-base",
                 icon: "h-10 w-10",
             },
         },
@@ -34,7 +34,7 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant, size, asChild = false, ...props }, ref) => {
+    ({ className, variant, size, ...props }, ref) => {
         return (
             <button
                 className={cn(buttonVariants({ variant, size, className }))}

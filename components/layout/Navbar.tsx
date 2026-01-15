@@ -21,46 +21,66 @@ const Navbar = () => {
 
     const navLinks = [
         { name: "Servicios", href: "#servicios" },
-        { name: "Academia", href: "#academia" },
+        { name: "Filosofía", href: "#filosofia" },
         { name: "Contacto", href: "#contacto" },
     ];
 
     return (
         <nav
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-400",
                 scrolled
-                    ? "bg-white/80 backdrop-blur-md border-lumen-light py-2 shadow-sm"
-                    : "bg-transparent border-transparent py-4"
+                    ? "bg-lumen-clarity/95 backdrop-blur-md border-b border-lumen-structure/10 py-3"
+                    : "bg-transparent py-5"
             )}
         >
-            <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+            <div className="container mx-auto px-6 md:px-8 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="group">
-                    <span className="font-serif text-2xl font-bold text-lumen-dark flex items-center gap-2">
-                        Lumen Creativo <span className="text-xl">💡</span>
+                    <span className={cn(
+                        "font-display text-xl tracking-wider transition-colors",
+                        scrolled ? "text-lumen-structure" : "text-lumen-clarity"
+                    )}>
+                        Lumen Creativo
                     </span>
                 </Link>
 
                 {/* Desktop Links */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-10">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-lumen-black hover:text-lumen-energy transition-colors"
+                            className={cn(
+                                "text-sm font-medium transition-colors",
+                                scrolled
+                                    ? "text-lumen-structure/70 hover:text-lumen-creative"
+                                    : "text-lumen-clarity/80 hover:text-lumen-clarity"
+                            )}
                         >
                             {link.name}
                         </Link>
                     ))}
-                    <Button variant="default" size="sm" className="font-semibold">
+                    <Button
+                        variant="default"
+                        size="sm"
+                        className={cn(
+                            "font-medium rounded-lg transition-all",
+                            scrolled
+                                ? "bg-lumen-vision text-lumen-clarity hover:bg-lumen-vision/90"
+                                : "bg-lumen-energy text-white hover:bg-lumen-energy/90"
+                        )}
+                    >
                         Agendar Auditoría
                     </Button>
                 </div>
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden p-2 text-lumen-dark"
+                    className={cn(
+                        "md:hidden p-2 transition-colors",
+                        scrolled ? "text-lumen-structure" : "text-lumen-clarity"
+                    )}
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
                     {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -74,20 +94,22 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white/95 backdrop-blur-lg border-b border-lumen-light overflow-hidden"
+                        className="md:hidden bg-lumen-clarity border-b border-lumen-structure/10 overflow-hidden"
                     >
-                        <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+                        <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-lg font-medium text-lumen-black hover:text-lumen-energy"
+                                    className="text-lg font-medium text-lumen-structure hover:text-lumen-creative transition-colors"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {link.name}
                                 </Link>
                             ))}
-                            <Button className="w-full mt-2">Agendar Auditoría</Button>
+                            <Button className="w-full mt-2 bg-lumen-vision text-lumen-clarity">
+                                Agendar Auditoría
+                            </Button>
                         </div>
                     </motion.div>
                 )}

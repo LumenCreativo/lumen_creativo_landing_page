@@ -1,39 +1,43 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
     content: [
-        "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./app/**/*.{js,ts,jsx,tsx,mdx}",
+        './pages/**/*.{js,ts,jsx,tsx,mdx}',
+        './components/**/*.{js,ts,jsx,tsx,mdx}',
+        './app/**/*.{js,ts,jsx,tsx,mdx}',
     ],
     theme: {
         extend: {
-            fontFamily: {
-                sans: ["var(--font-roboto)", "sans-serif"],
-                serif: ["var(--font-playfair)", "serif"],
-            },
             colors: {
                 lumen: {
-                    dark: "#1A237E",   // Primary Text (Dark Blue)
-                    main: "#00838F",   // Primary Accent (Cyan/Teal)
-                    energy: "#F7931E", // Secondary Accent (Orange)
-                    black: "#212121",  // Deep Black/Charcoal
-                    light: "#F5F5F5",  // Light Gray
-                    white: "#FFFFFF",  // Pure White
+                    'clarity': '#F5F5F5',      // Claridad, aire, luz
+                    'structure': '#212121',    // Estructura, sobriedad
+                    'creative': '#00838F',     // Creatividad confiable
+                    'vision': '#1A237E',       // Profundidad, visión
+                    'energy': '#F7931E',       // Energía, acción
                 },
             },
-            backgroundImage: {
-                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-                'hero-glow': "radial-gradient(circle at 50% 50%, rgba(0, 131, 143, 0.08) 0%, rgba(245, 245, 245, 0) 50%)",
+            fontFamily: {
+                serif: ['var(--font-serif)'],
+                sans: ['var(--font-sans)'],
+                display: ['var(--font-display)'],
             },
-            borderRadius: {
-                'lg': '0.75rem',
-                'xl': '1rem',
-                '2xl': '1.5rem',
-            }
+            animation: {
+                'fade-in': 'fadeIn 0.6s ease-in-out',
+                'slide-up': 'slideUp 0.8s ease-out',
+            },
+            keyframes: {
+                fadeIn: {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' },
+                },
+                slideUp: {
+                    '0%': { transform: 'translateY(20px)', opacity: '0' },
+                    '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+            },
         },
     },
     plugins: [],
-};
-export default config;
+}
+export default config

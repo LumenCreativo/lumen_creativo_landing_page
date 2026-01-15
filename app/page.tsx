@@ -3,18 +3,18 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import Purpose from "@/components/sections/Purpose";
 import Services from "@/components/sections/Services";
-import SaasTeaser from "@/components/sections/SaasTeaser";
-import ContactForm from "@/components/sections/ContactForm";
+import Philosophy from "@/components/sections/Philosophy";
+import CtaFinal from "@/components/sections/CtaFinal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-lumen-clarity">
       <Navbar />
       <Hero />
       <Purpose />
       <Services />
-      <SaasTeaser />
-      <ContactForm />
+      <Philosophy />
+      <CtaFinal />
       <Footer />
     </main>
   );
