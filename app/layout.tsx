@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Roboto } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -9,9 +9,10 @@ const playfair = Playfair_Display({
   display: 'swap',
 });
 
-const inter = Inter({
+const roboto = Roboto({
+  weight: ['100', '300', '400', '500', '700', '900'],
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-roboto",
   display: 'swap',
 });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
         playfair.variable,
-        inter.variable
+        roboto.variable
       )}>
         {children}
       </body>

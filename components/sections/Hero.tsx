@@ -6,35 +6,41 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center bg-lumen-light overflow-hidden pt-20">
-            {/* Background Decor */}
-            <div className="absolute inset-0 z-0 opacity-30">
-                <div className="absolute -top-20 -right-20 w-[500px] h-[500px] bg-lumen-main/20 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-lumen-energy/10 rounded-full blur-3xl" />
-            </div>
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-lumen-light">
+            {/* Enhanced Background */}
+            <div className="absolute inset-0 bg-hero-glow z-0" />
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-lumen-main/10 to-transparent rounded-full blur-[100px] opacity-60 translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-lumen-energy/5 to-transparent rounded-full blur-[80px] opacity-60 -translate-x-1/2 translate-y-1/2" />
 
-            <div className="container relative z-10 px-4 md:px-6 text-center max-w-4xl mx-auto">
+            <div className="container relative z-10 px-4 md:px-6 text-center max-w-5xl mx-auto pt-20">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="space-y-8"
                 >
-                    <span className="inline-block py-1 px-3 rounded-full bg-lumen-main/10 text-lumen-main text-sm font-semibold mb-6">
-                        Lumen Creativo 💡
-                    </span>
-                    <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-lumen-dark leading-tight mb-6">
-                        Iluminamos los proyectos que <br className="hidden md:block" /> transforman el mundo
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-lumen-main/20 text-lumen-dark text-sm font-semibold shadow-sm mb-4">
+                        <span className="w-2 h-2 rounded-full bg-lumen-energy animate-pulse" />
+                        Lumen Creativo - Sacred Digital Standards
+                    </div>
+
+                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-black text-lumen-dark leading-[1.1] tracking-tight">
+                        Iluminamos los proyectos <br className="hidden md:block" />
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-lumen-dark to-lumen-main">
+                            que transforman el mundo
+                        </span>
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                        Marketing digital de alta gama con esencia católica para instituciones, congregaciones y causas con propósito.
+
+                    <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
+                        Marketing digital de alta gama con esencia católica para instituciones que buscan trascender.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Button size="lg" className="group text-lg">
+                    <div className="flex flex-col sm:flex-row gap-5 justify-center items-center pt-4">
+                        <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-gradient-to-r from-lumen-main to-[#00ACC1] hover:from-[#00ACC1] hover:to-lumen-main text-white shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 border-0">
                             Iniciar Consultoría Gratuita
                             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
-                        <Button variant="outline" size="lg" className="text-lg">
+                        <Button variant="outline" size="lg" className="h-14 px-8 text-lg rounded-full border-2 border-lumen-dark/10 hover:bg-white hover:text-lumen-main transition-colors bg-white/50 backdrop-blur-sm">
                             Ver Nuestros Servicios
                         </Button>
                     </div>
