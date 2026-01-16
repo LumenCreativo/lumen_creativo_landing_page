@@ -27,11 +27,26 @@ export default function CTAFinal() {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate form submission
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        try {
+            const response = await fetch("/api/create-lead", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
 
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Error al enviar formulario");
+            }
+
+            setIsSubmitted(true);
+        } catch (error) {
+            console.error("Error enviando formulario:", error);
+            alert("Hubo un error al enviar tu mensaje. Por favor intenta de nuevo.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (
